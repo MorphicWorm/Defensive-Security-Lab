@@ -1,90 +1,50 @@
-# 🧪 Lab 01 – Registry-Based Persistence Detection
+# 🧪 01 – Registry-Based Persistence Detection
 
 ## 🎯 Objective
 
-Simulate and detect a basic **registry-based persistence** technique using:
+This lab focuses on detecting **Windows registry-based persistence techniques** — specifically methods where attackers create autorun entries via registry keys.
 
-- 🧠 **RegShot** – to compare registry changes.
-- 🔍 **Process Explorer** – to inspect running processes and persistence hooks.
-
----
-
-## 🖥️ Environment
-
-| Component | Details |
-|----------|---------|
-| VM | Windows Server 2025 (Victim) |
-| Network | Internal-only (SOC_Lab_Net) |
-| Tools | RegShot, Process Explorer, PowerShell |
+You’ll simulate benign persistence using tools like **RegShot** and **Process Explorer** to analyze registry changes and inspect running processes.
 
 ---
 
-## 🧰 Tools Setup
+## 🧭 MITRE ATT&CK Mapping
 
-### 🔹 RegShot
-
-- Download: [https://sourceforge.net/projects/regshot/](https://sourceforge.net/projects/regshot/)
-- Run `regshot-x64-unicode.exe` as admin
-
-### 🔹 Process Explorer
-
-- Download: [https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)
-- Run `procexp64.exe` as admin
+- **T1547.001** – [Registry Run Keys / Startup Folder](https://attack.mitre.org/techniques/T1547/001/)
 
 ---
 
-## 🔬 Simulation – Fake Persistence Entry
+## 🧰 Tools Used
 
-1. Create a benign `.bat` file:
-
-```powershell
-echo echo Hello from benign test > C:\Users\Public\benign_test.bat
-```
-
-2. Create a startup registry key:
-
-```powershell
-New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "FakeStartup" -Value "C:\Users\Public\benign_test.bat" -PropertyType String
-```
+| Tool | Purpose |
+|------|--------|
+| RegShot | Capture and compare registry snapshots |
+| Process Explorer | Visual inspection of running processes and autostart locations |
+| PowerShell | Simulate safe persistence |
+| Notepad++ | Review `.log` diff output |
+| (Optional) Sysmon | Log persistence registry key creation |
 
 ---
 
-## 🔍 Detection Workflow
+## 📂 Scenario Index
 
-### ✅ RegShot
-
-1. Open RegShot
-2. Take `1st shot`
-3. Run persistence simulation
-4. Take `2nd shot` → Click `Compare`
-5. Review registry diff output:
-   - Look for added key: `FakeStartup` in `Run` path
-
-### ✅ Process Explorer
-
-1. Search (`Ctrl+F`) for:
-   - `benign_test.bat`
-   - `FakeStartup`
-2. Enable:
-   - `View > Show Lower Pane`
-   - `Options > Verify Signatures`
+| Scenario | Description |
+|----------|-------------|
+| [`Lab-01-Benign-RunKey-Simulation`](./Lab-01-Benign-RunKey-Simulation/) | Simulate and detect a benign Run key entry using RegShot and Process Explorer |
+| *(Future)* `Lab-02-Autoruns-Analysis` | Detect persistence using Autoruns snapshotting |
+| *(Future)* `Lab-03-ImageFileExecutionOptions` | Registry-based execution hijack technique |
+| *(Future)* `Lab-04-SilentRegistryKeyViaScript` | Fileless persistence registry injection (safe simulation) |
 
 ---
 
-## 🧹 Cleanup
+## 🧠 Learning Outcomes
 
-```powershell
-Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "FakeStartup"
-Remove-Item "C:\Users\Public\benign_test.bat"
-```
-
----
-
-## 🧠 Skills Practiced
-
-- Registry diffing with RegShot
-- Visual process inspection
-- Detecting startup registry persistence
-- Cleanup and simulation hygiene
+- Understand how registry keys are abused for persistence
+- Use RegShot to identify added keys and values
+- Inspect system processes using Process Explorer
+- Practice safe, malware-free simulation in an isolated SOC lab environment
 
 ---
+
+> **Note:** All simulations use benign scripts. No real malware is used. This lab is designed for blue teamers, SOC analysts, and detection engineers.
+
