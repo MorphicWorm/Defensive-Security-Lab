@@ -74,7 +74,7 @@ Key Focus Areas:
 
 ## 📌 Author & Updates
 
-**Author**: [MorhicWorm](https://github.com/yourusername)  
+**Author**: [MorhicWorm](https://github.com/MorphicWorm)  
 **Last Updated**: April 2025  
 **Focus**: Detection engineering, hands-on lab building, and SOC analysis skills
 
