@@ -51,9 +51,9 @@ Key Focus Areas:
 | Lab | Description | Status |
 |-----|-------------|--------|
 | 01 - RegShot & Process Explorer | Detect registry-based persistence using RegShot and analyze startup processes | ✅ Complete |
-| 02 - Startup Folder Persistence | Simulate persistence via Startup folder entries | ✅ Complete |
-| 03 - Scheduled Task Persistence | Detect benign scheduled tasks created for persistence | ✅ Complete |
-| 04 - Active Setup Persistence | Analyze how Active Setup can be abused for stealthy execution | 🧪 In Progress |
+| 02 - Startup Folder Persistence | Simulate persistence via Startup folder entries | 🔜 Planned |
+| 03 - Scheduled Task Persistence | Detect benign scheduled tasks created for persistence | 🔜 Planned |
+| 04 - Active Setup Persistence | Analyze how Active Setup can be abused for stealthy execution | 🔜 Planned |
 | 05 - Windows Logs Investigation | Review Event Viewer and Sysmon logs related to persistence activity | 🔜 Planned |
 | 06 - Phishing Header Analysis | Parse and analyze email headers using test phishing messages | 🔜 Planned |
 
