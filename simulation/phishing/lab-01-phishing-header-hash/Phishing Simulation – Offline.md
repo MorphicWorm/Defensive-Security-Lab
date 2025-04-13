@@ -7,7 +7,7 @@
 
 ### ✅ 1. Create Lab Directory & Simulated Phishing Email
 
-##Copy and paste below code to Powershell
+Copy and paste below code to Powershell:
 
 ```powershell
 New-Item -Path "C:\Phishing-Email-Lab" -ItemType Directory -Force
