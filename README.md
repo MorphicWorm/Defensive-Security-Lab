@@ -30,7 +30,7 @@ You’ll simulate benign persistence using tools like **RegShot** and **Process 
 
 | Scenario | Description |
 |----------|-------------|
-| [`Lab-01-Benign-RunKey-Simulation`](./01-registry/lab-01-RunKey-Simulation) | Simulate and detect a benign Run key entry using RegShot and Process Explorer |
+| [`Lab-01-Benign-RunKey-Simulation`](./lab-01-RunKey-Simulation) | Simulate and detect a benign Run key entry using RegShot and Process Explorer |
 | *(Future)* `Lab-02-Autoruns-Analysis` | Detect persistence using Autoruns snapshotting |
 | *(Future)* `Lab-03-ImageFileExecutionOptions` | Registry-based execution hijack technique |
 | *(Future)* `Lab-04-SilentRegistryKeyViaScript` | Fileless persistence registry injection (safe simulation) |
