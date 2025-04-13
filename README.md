@@ -2,52 +2,81 @@
 
 Welcome to my **Defensive Security Lab** — a personal, hands-on learning space focused on simulating and detecting common attacker techniques such as persistence, process injection, and system tampering on Windows systems.
 
-This repo is designed to demonstrate real-world investigation and detection skills using safe, malware-free simulations. Each lab focuses on specific techniques, tools, or scenarios.
+This repo demonstrates real-world investigation and detection skills using **safe, malware-free simulations**. Each lab focuses on specific techniques, tools, or scenarios to build your blue team expertise.
+
+---
+
+## 📘 Table of Contents
+- [🔬 Lab Environment Setup](#-lab-environment-setup)
+- [🖥️ Virtual Machine Layout](#-virtual-machine-layout)
+- [🔒 Simulation Approach](#-simulation-approach)
+- [🧪 Lab Index](#-lab-index)
+- [🧰 Tools Used Across Labs](#-tools-used-across-labs)
+- [📌 Author & Updates](#-author--updates)
 
 ---
 
 ## 🔬 Lab Environment Setup
 
-All labs are run in a fully isolated virtual lab built on VirtualBox. The setup includes a Windows target system used for simulation and analysis, with room for expansion as new tools and skills are added.
+All labs are run in a fully isolated virtual environment built on **VirtualBox**.  
+The core setup includes a Windows target system used for simulation and analysis, with room for expansion as new tools and detection methods are explored.
 
-### 🖥️ Virtual Machine Layout
+---
 
-| VM | Role | Tools/Configs |
-|----|------|----------------|
-| **Windows Server 2025** *(Victim VM)* | Primary system for persistence simulation and detection | RegShot, Process Explorer, PowerShell, Sysmon, Event Viewer |
-| **(Optional) Analyst Workstation** | For future centralized log collection and IR tools | Splunk, Velociraptor, Wireshark, Notepad++ |
-| **Network** | Internal virtual switch only (`SOC_Lab_Net`) | Dual NIC: NAT (for updates), Internal (lab communication only) |
+## 🖥️ Virtual Machine Layout
+
+| VM                          | Role                                                 | Tools / Configs                                                                              |
+|----------------------------|------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| Windows Server 2025        | Primary system for persistence simulation & detection| RegShot, Process Explorer, PowerShell, Sysmon, Event Viewer                                 |
+| (Optional) Analyst Workstation | For future centralized log collection and IR tools   | Splunk, Velociraptor, Wireshark, Notepad++                                                  |
+| Network Configuration       | Internal virtual switch only (`SOC_Lab_Net`)         | Dual NIC: NAT (for Windows updates) + Internal (lab-only communication)                    |
 
 ---
 
 ## 🔒 Simulation Approach
 
-- No real malware is used — only safe batch files and EICAR test strings.
-- Simulated persistence techniques (e.g., startup folder, Run keys, scheduled tasks).
-- Focus on system changes, registry behavior, process trees, and autostarts.
-- Labs are documented with snapshots, commands, and cleanup steps.
+> ✅ All labs are safe and malware-free.  
+Simulations use harmless batch files, Windows-native commands, and the industry-standard **EICAR** test string (where applicable).
+
+Key Focus Areas:
+- Simulated persistence techniques (e.g., Startup folder, Run keys, Scheduled Tasks)
+- System changes, registry behavior, process trees, and autostarts
+- Windows logging visibility and forensic markers
+- Every lab includes setup steps, detection techniques, and cleanup procedures
 
 ---
 
 ## 🧪 Lab Index
 
-| Lab | Description |
-|-----|-------------|
-| `01-RegShot-ProcessExplorer` | Detecting registry-based persistence using RegShot and analyzing startup processes with Process Explorer |
-| `02-Startup-Folder-Persistence` | Simulating persistence via Startup folder entries |
-| `03-Scheduled-Task-Persistence` | Creating and detecting benign scheduled tasks for persistence |
-| `04-Active-Setup-Persistence` *(coming soon)* | Analyzing how Active Setup can be abused for stealthy execution |
-| `05-Windows-Logs-Investigation` *(future)* | Reviewing Event Viewer and Sysmon logs related to persistence activity |
-| `06-Phishing-Header-Analysis` *(optional/future)* | Parsing and analyzing email headers using test phishing messages |
+| Lab | Description | Status |
+|-----|-------------|--------|
+| 01 - RegShot & Process Explorer | Detect registry-based persistence using RegShot and analyze startup processes | ✅ Complete |
+| 02 - Startup Folder Persistence | Simulate persistence via Startup folder entries | ✅ Complete |
+| 03 - Scheduled Task Persistence | Detect benign scheduled tasks created for persistence | ✅ Complete |
+| 04 - Active Setup Persistence | Analyze how Active Setup can be abused for stealthy execution | 🧪 In Progress |
+| 05 - Windows Logs Investigation | Review Event Viewer and Sysmon logs related to persistence activity | 🔜 Planned |
+| 06 - Phishing Header Analysis | Parse and analyze email headers using test phishing messages | 🔜 Planned |
 
 ---
 
 ## 🧰 Tools Used Across Labs
 
-- [RegShot](https://sourceforge.net/projects/regshot/) – Registry snapshot and diff
-- [Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer) – Advanced process inspection
-- PowerShell – Scripting and automation of benign simulations
-- Sysmon – System event logging for future log analysis labs
-- Event Viewer – Manual log inspection
-- Notepad++ – Log and diff analysis
+| Tool            | Purpose                                                  |
+|-----------------|----------------------------------------------------------|
+| RegShot         | Registry snapshot and diffing                            |
+| Process Explorer| Advanced process inspection                              |
+| PowerShell      | Scripting and automation of benign simulations           |
+| Sysmon          | System event logging for advanced detection visibility   |
+| Event Viewer    | Manual log inspection and event tracking                 |
+| Notepad++       | Log and diff file analysis                               |
+
+---
+
+## 📌 Author & Updates
+
+**Author**: [MorhicWorm](https://github.com/yourusername)  
+**Last Updated**: April 2025  
+**Focus**: Detection engineering, hands-on lab building, and SOC analysis skills
+
+---
 
