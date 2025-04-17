@@ -1,50 +1,82 @@
-# 🧪 01 – Registry-Based Persistence Detection
+# 🛡️ Defensive Security Lab
 
-## 🎯 Objective
+Welcome to my **Defensive Security Lab** — a personal, hands-on learning space focused on simulating and detecting common attacker techniques such as persistence, process injection, and system tampering on Windows systems.
 
-This lab focuses on detecting **Windows registry-based persistence techniques** — specifically methods where attackers create autorun entries via registry keys.
-
-You’ll simulate benign persistence using tools like **RegShot** and **Process Explorer** to analyze registry changes and inspect running processes.
+This repo demonstrates real-world investigation and detection skills using **safe, malware-free simulations**. Each lab focuses on specific techniques, tools, or scenarios to build your blue team expertise.
 
 ---
 
-## 🧭 MITRE ATT&CK Mapping
-
-- **T1547.001** – [Registry Run Keys / Startup Folder](https://attack.mitre.org/techniques/T1547/001/)
-
----
-
-## 🧰 Tools Used
-
-| Tool | Purpose |
-|------|--------|
-| RegShot | Capture and compare registry snapshots |
-| Process Explorer | Visual inspection of running processes and autostart locations |
-| PowerShell | Simulate safe persistence |
-| Notepad++ | Review `.log` diff output |
-| (Optional) Sysmon | Log persistence registry key creation |
+## 📘 Table of Contents
+- [🔬 Lab Environment Setup](#-lab-environment-setup)
+- [🖥️ Virtual Machine Layout](#-virtual-machine-layout)
+- [🔒 Simulation Approach](#-simulation-approach)
+- [🧪 Lab Index](#-lab-index)
+- [🧰 Tools Used Across Labs](#-tools-used-across-labs)
+- [📌 Author & Updates](#-author--updates)
 
 ---
 
-## 📂 Scenario Index
+## 🔬 Lab Environment Setup
 
-| Scenario | Description |
-|----------|-------------|
-| [`Lab-01-Benign-RunKey-Simulation`](./lab-01-RunKey-Simulation) | Simulate and detect a benign Run key entry using RegShot and Process Explorer |
-| *(Future)* `Lab-02-Autoruns-Analysis` | Detect persistence using Autoruns snapshotting |
-| *(Future)* `Lab-03-ImageFileExecutionOptions` | Registry-based execution hijack technique |
-| *(Future)* `Lab-04-SilentRegistryKeyViaScript` | Fileless persistence registry injection (safe simulation) |
+All labs are run in a fully isolated virtual environment built on **VirtualBox**.  
+The core setup includes a Windows target system used for simulation and analysis, with room for expansion as new tools and detection methods are explored.
 
 ---
 
-## 🧠 Learning Outcomes
+## 🖥️ Virtual Machine Layout
 
-- Understand how registry keys are abused for persistence
-- Use RegShot to identify added keys and values
-- Inspect system processes using Process Explorer
-- Practice safe, malware-free simulation in an isolated SOC lab environment
+| VM                          | Role                                                 | Tools / Configs                                                                              |
+|----------------------------|------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| Windows Server 2025        | Primary system for persistence simulation & detection| RegShot, Process Explorer, PowerShell, Sysmon, Event Viewer                                 |
+| (Optional) Analyst Workstation | For future centralized log collection and IR tools   | Splunk, Velociraptor, Wireshark, Notepad++                                                  |
+| Network Configuration       | Internal virtual switch only (`SOC_Lab_Net`)         | Dual NIC: NAT (for Windows updates) + Internal (lab-only communication)                    |
 
 ---
 
-> **Note:** All simulations use benign scripts. No real malware is used. This lab is designed for blue teamers, SOC analysts, and detection engineers.
+## 🔒 Simulation Approach
+
+> ✅ All labs are safe and malware-free.  
+Simulations use harmless batch files, Windows-native commands, and the industry-standard **EICAR** test string (where applicable).
+
+Key Focus Areas:
+- Simulated persistence techniques (e.g., Startup folder, Run keys, Scheduled Tasks)
+- System changes, registry behavior, process trees, and autostarts
+- Windows logging visibility and forensic markers
+- Every lab includes setup steps, detection techniques, and cleanup procedures
+
+---
+
+## 🧪 Lab Index
+
+| Lab | Description | Status |
+|-----|-------------|--------|
+| 01 - RegShot & Process Explorer | Detect registry-based persistence using RegShot and analyze startup processes | ✅ Complete |
+| 02 - Startup Folder Persistence | Simulate persistence via Startup folder entries | 🔜 Planned |
+| 03 - Scheduled Task Persistence | Detect benign scheduled tasks created for persistence | 🔜 Planned |
+| 04 - Active Setup Persistence | Analyze how Active Setup can be abused for stealthy execution | 🔜 Planned |
+| 05 - Windows Logs Investigation | Review Event Viewer and Sysmon logs related to persistence activity | 🔜 Planned |
+| 06 - Phishing Header Analysis | Parse and analyze email headers using test phishing messages | 🔜 Planned |
+
+---
+
+## 🧰 Tools Used Across Labs
+
+| Tool            | Purpose                                                  |
+|-----------------|----------------------------------------------------------|
+| RegShot         | Registry snapshot and diffing                            |
+| Process Explorer| Advanced process inspection                              |
+| PowerShell      | Scripting and automation of benign simulations           |
+| Sysmon          | System event logging for advanced detection visibility   |
+| Event Viewer    | Manual log inspection and event tracking                 |
+| Notepad++       | Log and diff file analysis                               |
+
+---
+
+## 📌 Author & Updates
+
+**Author**: [MorhicWorm](https://github.com/MorphicWorm)  
+**Last Updated**: April 2025  
+**Focus**: Detection engineering, hands-on lab building, and SOC analysis skills
+
+---
 
